@@ -92,6 +92,8 @@ class RentalsController < ApplicationController
 
   private
   def rental_params
+    # debugger
+    # binding.pry
     params.require(:rental).permit(:start_date, :return_date, :checkout)
   end
 
