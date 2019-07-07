@@ -62,7 +62,7 @@ function createDiscountRentalObj(e, idTool) {
       credentials: 'same-origin'
     }
   ).then(function(res){
-    debugger
+    //debugger
     return res.json()
   })
   .then(function(rental) {
