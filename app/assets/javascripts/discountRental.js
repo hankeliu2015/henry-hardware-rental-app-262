@@ -23,6 +23,7 @@ function createDiscountRentalObj(e, idTool) {
     let custom_return_date = new Date(data.return_date)
     let content = `<p style="color: green" >Tool ${data.tool.name} rented successfully : Start Date: ${custom_start_date.toDateString()}; Return Date: ${custom_return_date.toDateString()} </p>`
     $(`#formDiscountRental-${idTool}`).html(content)
+    $(`#discount-rental-${idTool}`).html('')
 
   })
 
