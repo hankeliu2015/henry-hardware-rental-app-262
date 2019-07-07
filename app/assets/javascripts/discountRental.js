@@ -35,7 +35,18 @@ function createDiscountRentalObj(e, idTool) {
   // })
 
   // fetch api submit rental form - need rebuild params for rental#create.
-  let valueCSRF = value[1].value
+  let rentalData = $(e.target).serializeArray();
+  let valueCSRF = rentalData[1].value
+
+  debugger
+  let convertRentalData = {
+    rental: {
+      start_date: `${value[2]['value']}`,
+      return_date: `${value[3]['value']}`,
+      checkout: `${value[4]['value']}`
+    }
+  }
+
   debugger
   fetch(
     `/tools/${idTool}/rentals.json`,
@@ -47,11 +58,11 @@ function createDiscountRentalObj(e, idTool) {
         'Accept': 'application/json',
         'X-CSRF-Token': valueCSRF
       },
-      body: JSON.stringify(value),  //change to params, serializeArray contains different format.
+      body: convertRentalData,  //change to params, serializeArray contains different format.
       credentials: 'same-origin'
     }
   ).then(function(res){
-    // debugger
+    debugger
     return res.json()
   })
   .then(function(rental) {
