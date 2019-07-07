@@ -87,8 +87,8 @@ class Rental < ApplicationRecord
     (Date.today - self.return_date.to_date).to_i
   end
 
-  def next_day_return
-    
+  def next_day_return?
+    (self.return_date.to_date - Date.today).to_i == 1
   end
 
   def self.start_date_in_past

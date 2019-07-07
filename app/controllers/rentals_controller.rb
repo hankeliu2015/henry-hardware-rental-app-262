@@ -5,13 +5,14 @@ class RentalsController < ApplicationController
 
     @rentals = Rental.all.page params[:page]   #testing pagination pages settings
 
-
     @user = current_user
     # @user = User.find_by(id: current_user.id)
+    # binding.pry
 
     @in_prossession = @user.rentals.in_progress
     @overdue_items = @user.rentals.overdued
     @past_rented_tools = @user.rentals.completed
+    @next_day_return_tools = @user.rentals.next_day_return?
 
     respond_to do |format|
       format.html {render :index}
