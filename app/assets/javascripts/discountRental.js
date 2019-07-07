@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('a#discount-rental').on('click', displayRentalForm)
+  $('a.discount-rental').on('click', displayRentalForm)
 })
 
 function displayRentalForm(e) {
@@ -23,6 +23,7 @@ function createDiscountRentalObj(e, idTool) {
     let custom_return_date = new Date(data.return_date)
     let content = `<p style="color: green" >Tool ${data.tool.name} rented successfully : Start Date: ${custom_start_date.toDateString()}; Return Date: ${custom_return_date.toDateString()} </p>`
     $(`#formDiscountRental-${idTool}`).html(content)
+
   })
 
     .fail(function(data) {
