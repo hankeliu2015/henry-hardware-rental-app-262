@@ -3,6 +3,7 @@ before_action :set_tool, only: [:show, :edit, :update, :destroy]
 
   def index
     @tools = Tool.all
+    @return_next_day = current_user.rentals.no_return_next_day?
   end
 
   def show
