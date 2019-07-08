@@ -92,7 +92,7 @@ class Rental < ApplicationRecord
   end
 
   def self.return_next_day
-    where("return_date == ?", Date.tomorrow)
+    where("return_date == ? AND return == ?", Date.tomorrow, false)
   end
 
   def self.start_date_in_past
