@@ -35,7 +35,6 @@ function createDiscountRentalObj(e, idTool) {
   let rentalData = $(e.target).serializeArray();
   let valueCSRF = rentalData[1].value
 
-  // debugger
   let convertRentalData = {
     rental: {
       start_date: `${value[2]['value']}`,
@@ -44,30 +43,31 @@ function createDiscountRentalObj(e, idTool) {
     }
   }
 
-  // debugger
   fetch(
     `/tools/${idTool}/rentals.json`,
     {
       method: 'POST',
       headers: {
-        // 'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'X-CSRF-Token': valueCSRF
       },
-      body: JSON.stringify(convertRentalData),  //change to params, serializeArray contains different format.
+      body: JSON.stringify(convertRentalData),
       credentials: 'same-origin'
     }
   ).then(function(res){
-    //debugger
     return res.json()
   })
   .then(function(rental) {
-    debugger  //param is missing or the value is empty: rental
     console.log(rental)
-    let newRental = new Rental(rental)
-    let rentalHTML = newRental.formatRental()
-    $(`#formDiscountRental-${idTool}`).html(rentalHTML)
+    let toolName = rental.tool.name
+    let idTool = rental.tool_id
+    let custom_start_date = new Date(rental.start_date);
+    let custom_return_date = new Date(rental.return_date);
+
+    let content = `<p style="color: green" >${toolName} rented successfully : Start Date: ${custom_start_date.toDateString()}; Return Date: ${custom_return_date.toDateString()} </p>`
+     $(`#formDiscountRental-${idTool}`).html(content)
+     $(`#rental-${idTool}`).html('')
   })
 
 }   //end of createDiscountRentalObj
