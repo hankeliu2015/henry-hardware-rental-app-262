@@ -3,7 +3,7 @@
 </h3>
 
 <p class="<%='field_with_warning'%>">
-  <%= link_to "Tools need to be returned tomorrow. Click for details", profile_path if current_user && @return_next_day %>
+  <%= link_to "Tools need to be returned tomorrow. Click for details", profile_path if current_user && current_user.rentals.return_next_day.any? %>
 </p>
 
 <p><%#= link_to "Login", new_user_session_path %> <%#= link_to "Sign Up", new_user_registration_path %> <%#= link_to "User Show Page", user_path(current_user) if current_user %> </p>
