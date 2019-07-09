@@ -4,12 +4,11 @@ $(document).ready(function(){
 
 function displayRentalForm(e) {
   e.preventDefault();
-  let discoutToolId = parseInt(e.target.dataset.toolId) //tool_id not working.
+  let discoutToolId = parseInt(e.target.dataset.toolId) //do not use tool_id
   const discountRentForm = $(".hidden").html()
   $(`#formDiscountRental-${discoutToolId}`).html(discountRentForm)
   $(".hidden").html("")
   $(`form`).submit(function(event) {
-    // event.preventDefault();
     createDiscountRentalObj(event, discoutToolId)
   })
 }
