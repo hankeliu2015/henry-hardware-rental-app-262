@@ -7,7 +7,6 @@ class RentalsController < ApplicationController
 
     @user = current_user
     # @user = User.find_by(id: current_user.id)
-    # binding.pry
 
     @in_prossession = @user.rentals.in_progress
     @overdue_items = @user.rentals.overdued
@@ -36,7 +35,6 @@ class RentalsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @tool = Tool.find_by(id: params[:tool_id])
     @rental = current_user.rentals.build(rental_params)
     @rental.tool_id = @tool.id
@@ -54,10 +52,6 @@ class RentalsController < ApplicationController
         f.json {render json: @rental.errors, status: :unprocessable_entity}
       end
     end
-
-      # else
-      #   render :new #"/tools/#{@tool.id}/rentals/new"
-      # end
 
   end
 
@@ -93,8 +87,6 @@ class RentalsController < ApplicationController
 
   private
   def rental_params
-    # debugger
-    # binding.pry
     params.require(:rental).permit(:start_date, :return_date, :checkout)
   end
 
