@@ -61,7 +61,7 @@ class RentalsController < ApplicationController
 
     if @rental.return_date >= Date.today
       @rental.update(actual_return_date: Date.today, return: true)
-      redirect_to profile_path, {alert: "Thank you for return #{@rental.tool.name}. Here is the rental cost: $123456"}
+      redirect_to profile_path, {alert: "Thank you for return #{@rental.tool.name}."}
     else
 
       @rental.update(actual_return_date: Date.today, return: true)
