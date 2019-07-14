@@ -25,7 +25,7 @@
     <li>Description: <%= tool.description %></li>
     <li>Category: <%= tool.category %></li>
 
-    <%= button_to "Check Availability", new_tool_rental_path(tool), method: :get if user_signed_in? %>
+    <%= button_to "Check Availability", new_tool_rental_path(tool), method: :get, class: "btn btn-outline-secondary" if user_signed_in? %>
     <%= link_to "Rent it now", '#', class:"discount-rental", id: "rental-#{tool.id}", data: {tool_id: tool.id} if user_signed_in? && !tool.rental_in_progress%>
 
     <div id="formDiscountRental-<%= tool.id %>">
