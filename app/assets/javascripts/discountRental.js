@@ -26,7 +26,7 @@ function createDiscountRentalObj(e, idTool) {
   })
     .fail(function(data) {
     alert( "Tool is not available, please click on Rent button and choose available dates to schedule rental")
-    let errorMessage = `<p style="color: maroon">${data.responseJSON.tool[0]}<p>`; //Status Code: ${data.status} unprocessable entity: ${data.statusText}
+    let errorMessage = `<p class='alert-danger' style="display: inline-block">${data.responseJSON.tool[0]}<p>`; //Status Code: ${data.status} unprocessable entity: ${data.statusText}
     $(`#formDiscountRental-${idTool}`).html(errorMessage)
   })
 
