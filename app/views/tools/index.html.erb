@@ -2,7 +2,7 @@
   Hi, <%= current_user.username if current_user %>! Welcome to our store.
 </h3>
 
-<p class="<%='field_with_warning'%>">
+<p class="<%= 'alert alert-danger field_with_warning' if current_user && current_user.rentals.return_next_day.any? %>">
   <%= link_to "You have Tools need to be returned tomorrow. Click for details", profile_path if current_user && current_user.rentals.return_next_day.any? %>
 </p>
 
