@@ -29,5 +29,6 @@ Rails.application.routes.draw do
 
   patch 'rentals/:id/checkout_update', to: 'rentals#checkout_update', as: 'checkout'
 
+  post '/users/:id/message', to: 'users#message'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

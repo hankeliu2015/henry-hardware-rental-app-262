@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
       @overdue_items = current_user.rentals.overdued
 
-      @user = current_user #use @user to render serializer. 
+      @user = current_user #use @user to render serializer.
 
       respond_to do |f|
         f.html {render :show}
@@ -23,6 +23,17 @@ class UsersController < ApplicationController
       # render json: @user.to_json
       # render json: @user
 
+  end
+
+  def message
+    @receiver = User.find_by(id: params[:id])
+    @sender = current_user
+    @message = params[:content]
+
+    #send an email
+
+    training_invite(@receiver, @sender, @message)
+    redirect_to profile_path
   end
 
   # use current_user to replace user id in URL. repalce all @user with current_user
