@@ -83,13 +83,13 @@
 
           </tbody>
         </table>
-
-        <h5>Recommand <%= @user.username %> to rent a tool </h5>
+        <br>
+        <h6>Recommand <%= @user.username %> to rent a tool </h6>
         <div >
           <%= form_tag("/users/#{@user.id}/message") do %>
-            <label>Add a user message</label><br>
+            <label>Add a message for user</label><br>
             <%= text_area_tag :content %><br>
-            <%= submit_tag "Recommand" %>
+            <%= submit_tag "Send Email" %>
           <% end %>
         </div>
     </div>
