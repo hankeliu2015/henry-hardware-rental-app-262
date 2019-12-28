@@ -32,8 +32,12 @@ class UsersController < ApplicationController
 
     #send an email
 
-    training_invite(@receiver, @sender, @message)
-    redirect_to profile_path
+    NotificationMailer.training_invite(@receiver, @sender, @message).deliver_now
+    #email = NotificationMailer.training_invite(@receiver, @sender, @message)
+    # email.deliver_now    #testing purpose
+    # email.delever_later # won't slow down other    applications.
+
+    redirect_to tools_path
   end
 
   # use current_user to replace user id in URL. repalce all @user with current_user
