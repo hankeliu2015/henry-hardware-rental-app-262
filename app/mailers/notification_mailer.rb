@@ -4,9 +4,8 @@ class NotificationMailer < ApplicationMailer
     @sender = sender
     @message =  message
 
-# binding.pry
     mail(to: @receiver.email,
-        subject: "#{@sender.username} Recommand New Tool",
+        subject: "#{@sender.username} return reminder",
         reply_to: @sender.email
     )
   end
