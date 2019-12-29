@@ -32,8 +32,9 @@ class UsersController < ApplicationController
 
     #send an email
 
-    NotificationMailer.training_invite(@receiver, @sender, @message).deliver_now
-    #email = NotificationMailer.training_invite(@receiver, @sender, @message)
+    NotificationMailer.return_notify(@receiver, @sender, @message).deliver_now
+
+    #email = NotificationMailer.return_notify(@receiver, @sender, @message)
     # email.deliver_now    #testing purpose
     # email.delever_later # won't slow down other    applications.
 
