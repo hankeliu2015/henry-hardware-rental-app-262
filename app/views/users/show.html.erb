@@ -84,10 +84,10 @@
           </tbody>
         </table>
         <br>
-        <h6>Recommand <%= @user.username %> to rent a tool </h6>
+        <h6>Report an issue to Store Admin </h6>
         <div >
           <%= form_tag("/users/#{@user.id}/message") do %>
-            <label>Add a message for user</label><br>
+            <label>Add message :</label><br>
             <%= text_area_tag :content %><br>
             <%= submit_tag "Send Email" %>
           <% end %>
